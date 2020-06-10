@@ -1,0 +1,7 @@
+# omit caches
+__pycache__
+
+# omit specific file types
+*.txt
+*.jsonl
+*.DS_Store
