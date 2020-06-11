@@ -5,7 +5,7 @@ from twisted.internet import reactor
 import checkpoint
 import logging
 
-logger = logging.getLogger("run_spiders")
+logger = logging.getLogger("cp_crawler")
 
 # TODO: test with multiple spiders with different LOG_FILE and JOBDIR
 # TODO: convert spider_name to list of spider names
@@ -21,6 +21,8 @@ class checkpointed_crawler(object):
         cp_interval     interval, in seconds, between checkpoints;
                         expected to be in 100's at the minimum
         add_settings    additional settings specific to this spider
+    Preconditions:
+        JOBDIR must be set either in add_settings or in settings.py
     """
 
     # state of crawler
