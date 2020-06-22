@@ -29,9 +29,6 @@ class checkpointed_crawler(object):
     FINISHED = 'finished'
     RUNNING = 'running'
 
-    # number of active crawlers
-    active_crawlers = 0
-
     def __init__(self, spider_name: str, cp_interval: int,
                  add_settings: dict = {}):
         self._cps = 0
@@ -64,7 +61,6 @@ class checkpointed_crawler(object):
 
         # start crawling
         self._start_crawling()
-        self.active_crawlers += 1
 
     def _start_crawling(self):
         # start crawling
@@ -89,11 +85,6 @@ class checkpointed_crawler(object):
         logger.info("Successfully cleared checkpoint: {}"
                     .format(self._cp_path))
         self._state = self.FINISHED
-        self.active_crawlers -= 1
-
-        # close reactor if last crawler
-        if self.active_crawlers == 0:
-            reactor.stop()
 
     def _stop(self):
         # ignore event if crawler has finished
