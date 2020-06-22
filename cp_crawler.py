@@ -2,7 +2,7 @@ from scrapy.crawler import CrawlerRunner
 from scrapy.utils.project import get_project_settings
 from scrapy.utils.log import configure_logging
 from twisted.internet import reactor
-import checkpoint
+from dir_checkpoint import checkpoint
 import logging
 
 logger = logging.getLogger("cp_crawler")

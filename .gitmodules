@@ -1,0 +1,3 @@
+[submodule "dir_checkpoint"]
+	path = dir_checkpoint
+	url = https://github.com/a-jumani/dir-checkpoint.git

@@ -5,3 +5,6 @@ __pycache__
 *.txt
 *.jsonl
 *.DS_Store
+
+# omit specific files
+example.py
