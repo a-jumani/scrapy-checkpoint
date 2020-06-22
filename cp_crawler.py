@@ -107,7 +107,7 @@ class checkpointed_crawler(object):
         self._start_crawling()
 
     @staticmethod
-    def start_crawlers():
+    def start_crawler():
         """ Start executing all the crawlers.
         """
         reactor.run()

@@ -16,12 +16,14 @@ This is particularly suitable for long-running scraping jobs which cannot tolera
 Note: the checkpointing process was designed to be safe. High performance was not a goal.
 
 ## Usage
+Execute `python example.py &> logs.txt` to launch a crawler. Multiple crawlers can be launched as separate processes. Contents of `example.py` are given below:
+
 ```python
 import cp_crawler
 
 # additional and overriding settings
 additional_settings = {
-    'LOG_FILE': '...',
+    'LOG_FILE': 'logs.txt',
     'JOBDIR': '...',
     'ITEM_PIPELINES': {...}
 }
@@ -34,5 +36,7 @@ crawler = cp_crawler.checkpointed_crawler(
 )
 
 # start crawling
-cp_crawler.checkpointed_crawler.start_crawlers()
+cp_crawler.checkpointed_crawler.start_crawler()
 ```
+
+Note: `&> logs.txt` is needed in the execution command because it takes sometime before logs start getting directed to `LOG_FILE`.
