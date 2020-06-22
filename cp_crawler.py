@@ -1,14 +1,11 @@
+from dir_checkpoint import checkpoint
 from scrapy.crawler import CrawlerRunner
 from scrapy.utils.project import get_project_settings
 from scrapy.utils.log import configure_logging
 from twisted.internet import reactor
-from dir_checkpoint import checkpoint
 import logging
 
 logger = logging.getLogger("cp_crawler")
-
-# TODO: test with multiple spiders with different LOG_FILE and JOBDIR
-# TODO: convert spider_name to list of spider names
 
 
 class checkpointed_crawler(object):
@@ -85,6 +82,9 @@ class checkpointed_crawler(object):
         logger.info("Successfully cleared checkpoint: {}"
                     .format(self._cp_path))
         self._state = self.FINISHED
+
+        # stop reactor
+        reactor.stop()
 
     def _stop(self):
         # ignore event if crawler has finished
